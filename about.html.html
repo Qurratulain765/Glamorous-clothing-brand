@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Glamorous</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Color Variables - Matching your existing site */
+        :root {
+            --pine-tree: #282e1f;
+            --morning-blue: #8DA399;
+            --bone: #E3DAC9;
+            --olivine: #9AB973;
+            --russian-green: #5D7763;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bone);
+            color: var(--pine-tree);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navbar Styles - Matching your existing */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: var(--pine-tree);
+            color: var(--bone);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--olivine);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--morning-blue);
+        }
+
+        /* About Header */
+        .about-header {
+            text-align: center;
+            padding: 120px 0 60px;
+            background: linear-gradient(135deg, var(--morning-blue) 0%, var(--russian-green) 100%);
+            color: var(--bone);
+        }
+        
+        .about-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        
+        .about-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* About Story Section */
+        .story-section {
+            padding: 80px 0;
+            background-color: var(--bone);
+        }
+        
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .story-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .story-image img:hover {
+            transform: scale(1.02);
+        }
+        
+        .story-content h2 {
+            font-size: 2.5rem;
+            color: var(--russian-green);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .story-content h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--olivine);
+        }
+        
+        .story-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #4a5a3e;
+        }
+        
+        /* Mission & Vision Section */
+        .mission-vision {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, var(--bone) 0%, #f5f0e8 100%);
+        }
+        
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .mv-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+        
+        .mv-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--olivine);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mv-icon {
+            font-size: 3rem;
+            color: var(--olivine);
+            margin-bottom: 20px;
+        }
+        
+        .mv-card h3 {
+            font-size: 1.8rem;
+            color: var(--russian-green);
+            margin-bottom: 15px;
+        }
+        
+        .mv-card p {
+            color: #5a6a4e;
+            line-height: 1.7;
+        }
+        
+        /* Values Section */
+        .values-section {
+            padding: 80px 0;
+            background-color: var(--pine-tree);
+            color: var(--bone);
+        }
+        
+        .values-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--olivine);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        
+        .value-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--olivine);
+            margin-bottom: 15px;
+        }
+        
+        .value-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--morning-blue);
+        }
+        
+        .value-card p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+            background-color: var(--bone);
+        }
+        
+        .team-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--russian-green);
+            margin-bottom: 15px;
+        }
+        
+        .team-subtitle {
+            text-align: center;
+            color: #6a7a5e;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .team-card {
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .team-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .team-info {
+            padding: 20px;
+        }
+        
+        .team-info h4 {
+            font-size: 1.3rem;
+            color: var(--russian-green);
+            margin-bottom: 5px;
+        }
+        
+        .team-role {
+            color: var(--olivine);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .team-bio {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .team-social a {
+            width: 35px;
+            height: 35px;
+            background-color: var(--morning-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--pine-tree);
+            transition: all 0.3s;
+        }
+        
+        .team-social a:hover {
+            background-color: var(--olivine);
+            transform: translateY(-3px);
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--morning-blue) 0%, var(--russian-green) 100%);
+            color: var(--bone);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--olivine);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background-color: var(--pine-tree);
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: var(--olivine);
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            color: var(--bone);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--olivine);
+            color: var(--pine-tree);
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .cta-btn:hover {
+            background-color: var(--morning-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer - Matching your existing */
+        .footer {
+            background-color: var(--pine-tree);
+            color: var(--bone);
+            padding: 3rem 5%;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            color: var(--olivine);
+            font-size: 1.3rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--morning-blue);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--russian-green);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--olivine);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .story-section, .mission-vision, .values-section, .team-section, .stats-section, .cta-section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem 5%;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+            
+            .about-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mv-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .story-content h2 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar - Matching your existing -->
+    <nav class="navbar">
+        <div class="logo">GLAMOROUS</div>
+        <ul class="nav-links">
+            <li><a href="index.html.html">Home</a></li>
+            <li><a href="collection.html.html">Collections</a></li>
+            <li><a href="#" class="active">About</a></li>
+            <li><a href="form.html.html">Register Form</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Header -->
+    <header class="about-header">
+        <h1>Our Story</h1>
+        <p>Creating timeless fashion with purpose and passion since 2015</p>
+    </header>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Glamorous Store">
+                </div>
+                <div class="story-content">
+                    <h2>Who We Are</h2>
+                    <p>Glamorous was born from a simple yet powerful idea: fashion should be accessible, sustainable, and empowering. Founded in 2015 by a team of passionate designers, we set out to redefine the fashion industry by creating pieces that celebrate individuality while respecting our planet.</p>
+                    <p>What started as a small boutique has now grown into a global brand, but our core values remain unchanged. Every collection is thoughtfully crafted using premium materials, ethical production methods, and timeless designs that transcend seasonal trends.</p>
+                    <p>Today, Glamorous is proud to be a community of creators, dreamers, and change-makers who believe that what you wear is an expression of who you are. Join us on this journey as we continue to push boundaries and redefine what fashion means.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="mission-vision">
+        <div class="container">
+            <div class="mv-grid">
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To inspire confidence and self-expression through thoughtfully designed, sustainable fashion that celebrates diversity and empowers individuals to feel their best every day.</p>
+                </div>
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To become a global leader in sustainable fashion, creating a world where style and responsibility coexist harmoniously, and every purchase makes a positive impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="values-section">
+        <div class="container">
+            <h2>Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4>Sustainability</h4>
+                    <p>Committed to ethical sourcing, eco-friendly materials, and reducing our environmental footprint.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4>Inclusivity</h4>
+                    <p>Designing for all bodies, backgrounds, and identities. Fashion has no boundaries.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h4>Quality</h4>
+                    <p>Using premium materials and craftsmanship to create pieces that last.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hand-sparkles"></i>
+                    </div>
+                    <h4>Innovation</h4>
+                    <p>Constantly evolving with new technologies and design approaches.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="50000">0</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="120">0</div>
+                    <div class="stat-label">Countries Served</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">Design Awards</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">Sustainable Materials</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Meet The Team</h2>
+            <p class="team-subtitle">The creative minds behind Glamorous</p>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Sarah Johnson" class="team-image">
+                    <div class="team-info">
+                        <h4>Sarah Johnson</h4>
+                        <div class="team-role">Founder & Creative Director</div>
+                        <p class="team-bio">With 15+ years in fashion, Sarah leads our design vision with passion for sustainable luxury.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Michael Chen" class="team-image">
+                    <div class="team-info">
+                        <h4>Michael Chen</h4>
+                        <div class="team-role">Head of Design</div>
+                        <p class="team-bio">Award-winning designer known for blending classic elegance with modern aesthetics.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Elena Rodriguez" class="team-image">
+                    <div class="team-info">
+                        <h4>Elena Rodriguez</h4>
+                        <div class="team-role">Sustainability Officer</div>
+                        <p class="team-bio">Dedicated to ensuring every product meets our highest ethical and environmental standards.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="David Kim" class="team-image">
+                    <div class="team-info">
+                        <h4>David Kim</h4>
+                        <div class="team-role">Operations Manager</div>
+                        <p class="team-bio">Ensures seamless delivery and customer satisfaction across all our markets.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Discover Your Style?</h2>
+            <p>Explore our latest collections and find pieces that speak to your soul.</p>
+            <a href="collection.html.html" class="cta-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer - Matching your existing -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>GLAMOROUS</h3>
+                <p>Redefining fashion with elegance and sustainability. Discover your unique style with our premium collections.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html.html">Home</a></li>
+                    <li><a href="collection.html.html">New Arrivals</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Glamorous. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Stats Counter Animation
+        const stats = document.querySelectorAll('.stat-number');
+        
+        const animateNumbers = () => {
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                let current = 0;
+                
+                const updateNumber = () => {
+                    current += increment;
+                    if (current < target) {
+                        stat.innerText = Math.floor(current);
+                        requestAnimationFrame(updateNumber);
+                    } else {
+                        stat.innerText = target.toLocaleString();
+                    }
+                };
+                
+                updateNumber();
+            });
+        };
+        
+        // Trigger animation when stats section is in view
+        const statsSection = document.querySelector('.stats-section');
+        let animated = false;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animated) {
+                    animated = true;
+                    animateNumbers();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(statsSection);
+        
+        // Hover animation for cards
+        const cards = document.querySelectorAll('.mv-card, .value-card, .team-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.3s ease';
+            });
+        });
+    </script>
+</body>
+</html>
